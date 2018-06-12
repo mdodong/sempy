@@ -1,0 +1,1 @@
+Sempy is a semux light wallet made using python
