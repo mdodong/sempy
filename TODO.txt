@@ -1,43 +1,8 @@
-check for wallet.txt
-
-{
-    "wallet": [
-        {
-            "address1":"private_key1"
-        },
-        {
-            "address2":"private_key2"
-        },
-    ]
-}
-wallet = {"address":"private_key"}
-
-if no wallet.txt
-
-create a new wallet
-
-Account()
-
-save the account details in wallet.txt
-
-
-------------------
-
-cli options
-- create
-  privk, optional, create wallet.txt from private key if provided
-
-- display balance
-
-- send,
-  from_ = optional, default to first wallet
-  sendTo
-  value
-  fee, optional, defaults to 0.005 sems
-  data, optional, defauts to ''
-
-- vote, unvote
-  from_ = optional, default to first wallet
-  sendTo
-  value
+update sempy-server
+    - get_votes
+    - get_delegates
+    
+sempy-cli
+    - vote (need utils for checking delegates by name and address)
+    - unvote(need utils for checking locked balance and active votes)
 
