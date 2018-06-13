@@ -1,6 +1,8 @@
+import time
+
 from semux.hash import hash256
 from semux.key import Key
-from .utils import SimpleEncoder
+from semux.utils import SimpleEncoder
 
 
 TRANSACTION_TYPE = {
@@ -20,7 +22,7 @@ NETWORK = {
 
 class Transactions:
     def __init__(self, networkId, txType, sendTo, value, fee, nonce,
-                 timestamp, data):
+                 timestamp=None, data=None):
         """
         Create and initialize a transaction object
 
@@ -40,8 +42,17 @@ class Transactions:
         self.value = value
         self.fee = fee
         self.nonce = nonce
-        self.timestamp = timestamp
-        self.data = data
+        
+        if timestamp is None:
+            self.timestamp = int(time.time()*1000)
+        else:
+            self.timestamp = timestamp
+        
+        if data is None:
+            self.data = bytearray(b'')
+        else:
+            self.data = data
+        
 
         # encode Transaction Data
         enc = SimpleEncoder()
