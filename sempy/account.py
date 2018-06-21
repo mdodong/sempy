@@ -22,5 +22,23 @@ class Account:
     def getPrivateKey(self):
         return self.privk
 
-    def sign(self, message):
-        return self.acc.sign(message)
+    def signTx(self, tx):
+        """
+        Sign a tx from sempy.transaction.Transactions()
+        Args:
+            tx (Transactions.txHash): Unsigned Transaction Hash
+        Returns:
+            signature (Transactions.signature): signature to be added on Transaction data 
+        """
+        return self.acc.sign(tx)
+    
+    def signMessage(self, message):
+        """
+        Sign a plain text message.
+        Args:
+            message (str): plain text message
+        Returns:
+            hex. signed message in hex format.
+        """
+        sig = self.acc.sign(hash256(message.encode()))
+        return binascii.hexlify(sig.to_bytes())
