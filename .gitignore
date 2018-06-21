@@ -10,3 +10,7 @@
 venv/
 
 *wallet.txt
+
+sempy/cli/
+dev/
+bin/

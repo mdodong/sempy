@@ -19,7 +19,7 @@ from sempy.cli.cliutils import checkAddress
 @click.option('--f', default=0, help="address to send from, index from `sempy-cli.py listacc`")
 @click.option('--to', default=None, help="address to recieve the transaction")
 @click.option('--amount', default=0.00, help="amount to transact")
-@click.option('--fee', default=0.005, help="amount to transact")
+@click.option('--fee', default=0.005, help="fee to use")
 @click.option('--data', default='', help='data string to be added to the transaction')
 def transfer(f, to, amount, fee, data):
     if to is None:
@@ -42,7 +42,7 @@ def transfer(f, to, amount, fee, data):
         balance <= 0 or
         balance < (amount+fee)
         ):
-        sys.exit('unable to send sems you have %f sems in your wallet %s' % (balance, info['result']['address']))
+        sys.exit('error: insufficient balance, you have %f sems in your wallet %s' % (balance, info['result']['address']))
     else:
         print('you are now transferring sems')
         print('from: %s -> to: %s' % (add, to))
