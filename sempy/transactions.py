@@ -2,7 +2,7 @@ import time
 
 from semux.hash import hash256
 from semux.key import Key
-from semux.utils import SimpleEncoder
+from sempy.utils import SimpleEncoder
 
 
 TRANSACTION_TYPE = {
@@ -71,7 +71,7 @@ class Transactions:
 
     def signTx(self, account):
         self.signed = True
-        self.signature = account.sign(self.txHash)
+        self.signature = account.signTx(self.txHash)
 
     def txHash(self):
         return self.txHash
