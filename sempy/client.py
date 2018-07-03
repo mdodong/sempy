@@ -3,7 +3,7 @@ import requests
 class Client:
     def __init__(self, host=None):
         if host is None:
-            self.host = "http://localhost:5000/api"
+            self.host = "http://45.32.185.200/api"
         else:
             self.host = host
             
@@ -31,6 +31,10 @@ class Client:
         params = {'delegate' : delegate}
         return self.client('/votes', params)
 
+    def get_vote(self, delegate, voter):
+        params = {'delegate' : delegate, 'voter':voter}
+        return self.client('/vote', params)
+
     def get_account(self, address):
         params = {'address' : address}
         return self.client('/account', params)
@@ -41,7 +45,7 @@ class Client:
 
     def get_nonce(self, address):
         info = self.get_account(address)
-        return {'nonce':info['result']['nonce']}
+        return info['result']['nonce']
 
     def get_transaction_count(self, address):
         info = self.get_account(address)
