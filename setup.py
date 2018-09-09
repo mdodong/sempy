@@ -11,6 +11,7 @@ setup(name='sempy',
       install_requires=[
           'semux',
           'requests',
-          'click'
+          'click',
+          'bcrypt'
       ],
       zip_safe=False)
