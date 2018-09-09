@@ -12,6 +12,7 @@ setup(name='sempy',
           'semux',
           'requests',
           'click',
-          'bcrypt'
+          'bcrypt',
+          'pycryptodome'
       ],
       zip_safe=False)
